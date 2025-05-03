@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THORNS AND BALLOONS PC Online Play</title>
+    <meta name="description" content="Simple interface, friendly interaction 🌟 free! Thorn And Balloons is a very interesting casual game. Bounce Pop it off walls to burst all balloons and win!" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" href="https://cdn.thornandballoons.net/game/icons/icon-256.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.thornandballoons.net/commons/swiper.min.css">
+
+    <script src="https://cdn.thornandballoons.net/commons/swiper.min.js"></script>
+    <script src="https://cdn.thornandballoons.net/commons/lazyload.js"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9259419232762821"
+            crossorigin="anonymous"></script>
+
+    <!-- Google tag (gtag.js)-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V50BKGMG2Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-V50BKGMG2Y');
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #b0e57b;
+            padding:20px;
+        }
+
+        #exitFullscreenButton {
+            font-size: 16px;
+            cursor: pointer;
+            position: fixed;
+            top:90px;
+            font-size: 16px;
+            background-color: #af09a1;
+            color: white;
+            border: none;
+            border-bottom-right-radius: 15px;
+            border-top-right-radius: 15px;
+            cursor: pointer;
+        }
+        #fullscreenFrame{
+            height: 100%;
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .left-panel {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .right-panel {
+            flex: 1;
+            padding: 20px;
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            margin-left: 20px;
+        }
+
+        h1, h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 20px;
+        }
+
+        ul li {
+            background: #e0f7ff;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        /*p {*/
+        /*    margin: 0 0 20px;*/
+        /*}*/
+
+        .game-container {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            /*padding: 20px;*/
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: width 0.3s ease;
+            /*background-image: url('https://cdn.thornandballoons.net/images/banner-thornandballoons.jpg');*/
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .game-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .game-container h1, .game-container p, .game-container button {
+            position: relative;
+            z-index: 1;
+        }
+
+        .game-container h1 {
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+
+        .game-container p {
+            margin: 0 0 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .game-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .game-container button:hover {
+            background-color: #45a049;
+        }
+
+        .game-container a {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 180px;
+            margin: 0 auto;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .game-container a:hover {
+            background-color: #45a049;
+        }
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .toolbar img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .toolbar h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .toolbar button {
+            padding: 8px 16px;
+            font-size: 14px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .toolbar button:hover {
+            background-color: #45a049;
+        }
+
+        .toolbar .share-buttons {
+            display: flex;
+            gap: 2px;
+        }
+
+        .toolbar .share-buttons button {
+            background-color: transparent;
+            color: #333;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .toolbar .share-buttons button:hover {
+            color: #4CAF50;
+        }
+
+
+        .header {
+            position: relative;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            background: linear-gradient(180deg, #1ab394, #7dff3e);
+            overflow: hidden;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #fff;
+            margin: 0;
+            position: relative;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            fill: none;
+            stroke: url(#rainbow-gradient);
+            stroke-width: 9;
+            stroke-dasharray: 190 300;
+            stroke-dashoffset: 0;
+            animation: wave 10s linear infinite;
+        }
+
+        @keyframes wave {
+            0% {
+                stroke-dashoffset: 0;
+            }
+            100% {
+                stroke-dashoffset: -490;
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            iframe, .toolbar {
+                width: 100%;
+            }
+
+            .game-frame{
+                height: 100%;
+            }
+
+            .toolbar {
+                align-items: center;
+            }
+
+            .toolbar img, .toolbar h3, .toolbar button {
+                margin-bottom: 10px;
+            }
+
+            .toolbar .share-buttons{
+                gap: 2px;
+            }
+
+            .game-container {
+                width: 100%;
+                padding: 0px;
+            }
+
+            .container{
+                padding: 0px;
+            }
+
+            .right-panel{
+                margin-left: 0px;
+            }
+            .left-panel {
+                margin-top: 20px;
+            }
+
+            .header {
+                padding: 30px 0;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .wave {
+                height: 100px;
+            }
+        }
+
+        .game-list-container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            padding: 20px;
+            gap:2%;
+            box-sizing: border-box;
+        }
+
+        .game-list-container5 {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            padding: 20px;
+            height: 110px;
+            overflow: auto;
+            box-sizing: border-box;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /*padding: 20px;*/
+            box-sizing: border-box;
+            margin-top: 5px;
+            width: 100%;
+        }
+
+        .box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .box h2 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .box p {
+            text-align: center;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        /* box 2 start */
+        .box5 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /*padding: 20px;*/
+            box-sizing: border-box;
+            width: 100px;
+            margin-right: 8px;
+            padding: 2px;
+        }
+
+        .box5 img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .box5 h2 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .box5 p {
+            text-align: center;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .box5 {
+                width: 60px;
+            }
+        }
+        /* box 2 end*/
+
+        /* box 2 start */
+        .box2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /*padding: 20px;*/
+            box-sizing: border-box;
+            margin-top: 5px;
+            width: 98%;
+        }
+
+        .box2 img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .box2 h2 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .box2 p {
+            text-align: center;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .box2 {
+                width: 48%;
+            }
+        }
+        /* box 2 end*/
+
+
+        /* box 2 start */
+        .box3 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /*padding: 20px;*/
+            box-sizing: border-box;
+            margin-top: 5px;
+            width: 18%;
+        }
+
+        .box3 img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .box3 h2 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .box3 p {
+            text-align: center;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .box3 {
+                width: 48%;
+            }
+        }
+        /* box 3 end*/
+
+        /* box 2 start */
+        .box4 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /*padding: 20px;*/
+            box-sizing: border-box;
+            margin-top: 5px;
+            width: 10%;
+        }
+
+        .box4 img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .box4 h2 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .box4 p {
+            text-align: center;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .box4 {
+                width: 48%;
+            }
+        }
+        /* box 4 end*/
+
+        .description-div {
+            max-width: 90%;
+            margin: 0 auto;
+            text-align: left;
+            background-color: white;
+            margin-top: 20px;
+        }
+
+        .description-div h1, h2 {
+            color: #666666;
+        }
+
+        @media (max-width: 768px) {
+            .box {
+                width: 32%;
+            }
+        }
+
+    /*    add 20250223 */
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #d518f6;
+            color: white;
+            padding: 10px 20px;
+            /*position: fixed;*/
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a{
+            text-decoration: none;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar .logo h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .navbar .menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar .menu li {
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .navbar .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .navbar .menu .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #444;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .menu .submenu a {
+            display: block;
+            margin: 5px 0;
+        }
+
+        .navbar .menu li:hover .submenu {
+            display: block;
+        }
+
+        /* Mobile Menu */
+        .navbar .mobile-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        .navbar .mobile-menu i {
+            font-size: 24px;
+            color: white;
+        }
+
+        /* Media Query for Mobile Devices */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .navbar .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: #333;
+                padding: 10px;
+            }
+
+            .navbar .menu li {
+                margin: 10px 0;
+            }
+
+            .navbar .menu .submenu {
+                position: static;
+                background-color: #444;
+                margin-top: 10px;
+            }
+
+            .navbar .mobile-menu {
+                display: block;
+            }
+        }
+
+        /* Main Content */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 60px; /* Adjust for navbar height */
+        }
+
+        .left-div {
+            background-color: #f0f0f0;
+            background-image: url(https://cdn.thornandballoons.net/images/ts-bg.svg);
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .iframe-container {
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: opacity 0.5s ease;
+        }
+
+        .iframe-container {
+            display: none;
+            position: relative;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: calc(60vh - 60px); /* Adjust for navbar height */
+            border: none;
+        }
+
+        .right-div {
+            background-color: #163a3b;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .game-main-image {
+            /*width: 100%;*/
+            height: 50%;
+            width: auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border-radius: 8px;
+        }
+
+        .game-title {
+            font-size: 24px;
+            margin: 20px 0;
+            color: rgba(102, 51, 153, 0.69);
+        }
+
+        .play-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .image-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .image-list-item {
+            display: flex;
+            /*margin-bottom: 20px;*/
+            cursor: pointer;
+        }
+
+        /*.image-list-item:hover{
+            border: 4px solid #2cffc3;
+        }*/
+
+        .image-list-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-list-item img {
+            height: auto;
+            border-radius: 8px;
+            margin-right: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .item-title{
+            width: 100%; /* 设置宽度 */
+            white-space: nowrap; /* 不换行 */
+            overflow: hidden; /* 隐藏超出部分 */
+            text-overflow: ellipsis; /* 显示省略号 */
+            color: rgba(0, 0, 0, .75);
+            font-size: 13px;
+        }
+
+        .image-list-item a{
+            text-decoration: none;
+            width: 100%;
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .game-main-image {
+                width: 80%;
+            }
+
+            .left-div , .iframe-container {
+                width: 100%;
+                height: 65vh;
+            }
+
+            .iframe-container{
+                padding: 0px;
+            }
+
+            .right-div {
+                width: 100%;
+            }
+        }
+
+        /* Media query for desktop devices */
+        @media (min-width: 769px) {
+            .left-div{
+                width: 100%;
+                height: 80vh;
+            }
+            .iframe-container {
+                width: 100%;
+                height: 80vh;
+            }
+
+            .right-div {
+                width: 25%;
+                margin-left: 10px;
+            }
+        }
+
+        #tesseract-splash-button {
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 5%;
+            margin: 0 auto;
+            outline: none;
+            flex-direction: row;
+            width: 13rem;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 86.154px;
+            background: #3b21cc !important;
+            color: #eee;
+            margin-bottom:30px;
+        }
+
+        #tesseract-splash-button>p {
+            margin-left: 1rem;
+        }
+
+        .exit-btn {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            display: none; /* 默认不显示 */
+            z-index: 1000;
+        }
+
+        iframe.fullscreen {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: none;
+        }
+
+        .also-like-container {
+            display: flex;
+            align-items: center; /* 垂直居中对齐 */
+            justify-content: flex-start; /* 水平起始对齐 */
+            gap: 16px; /* 图片和文字之间的间距 */
+            background-color: #2cffc3;
+            padding: 20px;
+            /*border-radius: 8px;*/
+            -webkit-border-top-left-radius: 8px;
+            -webkit-border-top-right-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .also-like-container img {
+            width: 50px; /* 图片宽度 */
+            height: auto; /* 保持图片比例 */
+            border-radius: 8px; /* 圆角效果 */
+        }
+        .also-like-container .text {
+            text-align: left; /* 文字靠左对齐 */
+            flex: 1; /* 占据剩余空间 */
+        }
+        .also-like-container .text h2 {
+            margin: 0 0 8px; /* 标题与段落的间距 */
+            color: white;
+        }
+        .also-like-container .text p {
+            margin: 0;
+        }
+
+        footer {
+            background-color: #f2f2f2;
+            padding: 20px 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        footer a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* new 3 cols start */
+        .new-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            margin: 0 auto;
+            padding: 8px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .new-left, .new-middle, .new-right {
+            /*padding: 20px;*/
+            box-sizing: border-box; /* 包含内边距和边框 */
+        }
+
+        .new-left {
+            /*background-color: #f9f9f9;*/
+            padding: 3px;
+        }
+
+        .new-middle {
+            /*background-color: #f0f0f0;*/
+        }
+
+        .game-preload{
+            background-color:#4CAF50;
+            background-image: url(https://cdn.thornandballoons.net/images/ts-bg.svg);
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            box-sizing: border-box;
+            height: calc(100vh - 270px);
+            border-radius: 10px;
+            margin-left: 10px;
+        }
+
+        .new-right {
+            /*background-color: #264036;*/
+            padding: 5px;
+        }
+
+        /* 默认的PC端样式 */
+        .new-left {
+            width: 10%;
+        }
+
+        .new-middle {
+            width: 70%;
+        }
+
+        .new-right {
+            width: 20%;
+        }
+
+        .google-ads-container-01{
+            background: #333333;
+            width: 98%;
+            height: 150px;
+            border-radius: 10px;
+            margin-left: 10px;
+            margin-top:10px;
+        }
+
+        /* 移动端样式 */
+        @media (max-width: 768px) {
+            .new-middle, .new-right {
+                width: 100%;
+            }
+            .new-left{
+                display: none;
+            }
+
+            body{
+                padding:0px;
+            }
+
+            .game-preload{
+                margin-left: 0px;
+            }
+
+            .google-ads-container-01{
+                margin-left: 0px;
+            }
+        }
+
+        /*  nav start   */
+        .nav{
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo{
+            width: 150px;
+        }
+        @media (max-width: 768px) {
+            .logo {
+                width: 100px;
+            }
+        }
+
+        .top-header{
+            margin-bottom: 10px;
+        }
+
+        .top-games-logo{
+            width: 50px;
+            float: left;
+        }
+
+        .top-title{
+            line-height: 25px;
+            color: #009688;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .new-header{
+            margin-bottom: 10px;
+        }
+
+        .new-games-logo{
+            width: 30px;
+            float: left;
+        }
+
+        .new-title{
+            line-height: 30px;
+            color: #009688;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+        /*  nav end  */
+
+    /*  pop start  */
+        #pop {
+            width: calc(100% - 30px);
+            margin: 5px auto 15px;
+            overflow-x: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top:20px;
+        }
+        #pop .sortTitle {
+            display: flex
+        ;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        #pop .pop .swiper-slide {
+            width: 130px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .02);
+        }
+
+        #pop .pop .swiper-slide a .thum {
+            width: 110px !important;
+            height: 110px !important;
+            margin: -20px auto 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #pop .pop .swiper-slide a .thum img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #pop .pop .swiper-slide a h3 {
+            font-size: 14px;
+            color: #666;
+            overflow: hidden;
+            padding: 0 10px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-weight: 400;
+        }
+
+        #pop .pop .swiper-slide a .desc {
+            font-size: 12px;
+            color: #999;
+        }
+
+        #pop .pop .swiper-slide a .desc span {
+            color: #f99d01;
+        }
+
+        #pop .pop .swiper-slide a.play {
+            display: block;
+            margin: 10px auto 15px;
+            color: #fff;
+            font-size: 14px;
+            background-color: #19cea9;
+            width: 60px;
+            height: 26px;
+            line-height: 26px;
+            border-radius: 14px;
+        }
+        #pop .pop .swiper-slide a {
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+        }
+        .play {
+            display: block;
+            color: #fff;
+            background-color: #19cea9;
+            font-size: 18px;
+            font-weight: 700;
+            width: 80%;
+            margin: 15px auto;
+            text-align: center;
+            height: 46px;
+            line-height: 46px;
+            border-radius: 24px;
+            text-decoration: none;
+            animation: playAnimate 500mslinear infinite alternate;
+        }
+    /*  pop end  */
+
+        .skill-games{
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8px;
+            border-radius: 8px;
+            background: white;
+            margin-top: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 设置顶部导航栏的样式 */
+        .top-bar {
+            height: 120px; /* 设置行高为50px */
+            display: flex; /* 使用flex布局 */
+            align-items: center; /* 垂直居中 */
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                display: none;
+            }
+        }
+
+        /* 设置logo的样式 */
+        .thorn-logo {
+            height: 110px; /* logo高度与行高一致 */
+            width: auto; /* 自动调整宽度 */
+            margin-left: 10px; /* 左边距 */
+            margin-right: 20px;
+        }
+
+        /* 设置图片列表的样式 */
+        .top-bar-image-list {
+            display: flex; /* 使用flex布局 */
+        }
+
+        .top-bar-image-list img {
+            height: 90%;
+            width: auto; /* 自动调整高度 */
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="top-bar">
+    <!-- logo -->
+    <a href="https://thornandballoons.net/">
+        <img src="https://cdn.thornandballoons.net/images/logo-thorn-and-balloons.png" alt="Logo thorn and balloons" class="thorn-logo">
+    </a>
+
+    <!-- 图片列表 -->
+    <div class="top-bar-image-list">
+        <ul class="image-list game-list-container5">
+            <% topGames.forEach(game => { %>
+                <li class="image-list-item box5">
+                    <a href="/games/<%= game.urlTag %>">
+                        <div>
+                            <img class="lazyload" data-src="<%= game.imageUrl %>" alt="<%= game.name %>">
+                        </div>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+
+<div class="new-container">
+    <div class="new-left">
+        <div class="top-header">
+            <img class="top-games-logo" src="https://cdn.thornandballoons.net/images/hot-games-thorn-and-balloons-png.webp" alt="top games thorn and balloons png">
+            <div class="top-title">Top Games</div>
+        </div>
+        <ul class="image-list game-list-container">
+            <% leftGames.forEach(game => { %>
+                <li class="image-list-item box">
+                    <a href="/games/<%= game.urlTag %>">
+                        <div>
+                            <img class="lazyload" data-src="<%= game.imageUrl %>" alt="<%= game.name %>">
+                        </div>
+
+                        <div class="item-title"><%= game.name %></div>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+    <div class="new-middle">
+        <div class="game-preload">
+            <img src="https://cdn.thornandballoons.net/images/banner-thorn-and-balloons-classic.jpg" alt="Game Main Image" class="game-main-image">
+            <h1 class="game-title">Thorn and Balloons</h1>
+            <a id="tesseract-splash-button" style="display: flex;cursor: pointer" onclick="showIframe()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" fill="none"><g clip-path="url(#clip0_3881_233)"><path d="M12.3067 0.692139C5.50672 0.692139 -0.000976562 6.19983 -0.000976562 12.9998C-0.000976562 19.7998 5.50672 25.3075 12.3067 25.3075C19.1067 25.3075 24.6144 19.7998 24.6144 12.9998C24.6144 6.19983 19.1067 0.692139 12.3067 0.692139ZM17.0267 15.6737L11.9036 18.6306C9.84518 19.8183 7.27287 18.3321 7.27287 15.9568V10.0429C7.27287 7.66752 9.84518 6.18137 11.9036 7.36906L17.0267 10.326C19.0852 11.5137 19.0852 14.486 17.0267 15.6737Z" fill="white"></path></g><defs><clipPath id="clip0_3881_233"><rect width="24.6154" height="24.6154" fill="white" transform="translate(0 0.692261)"></rect></clipPath></defs>
+                </svg>
+                <p>Play Now</p>
+            </a>
+        </div>
+
+        <div class="iframe-container">
+            <iframe id="game-iframe" src="https://cdn.thornandballoons.net/game/index.html" frameborder="0"></iframe>
+            <!--<div class="toolbar">
+                <button onclick="hideIframe()">Close</button>
+                <button onclick="toggleFullScreen()"><i class="fas fa-expand"></i></button>
+            </div>-->
+            <div id="toolbar-div" class="toolbar">
+                <img src="https://cdn.thornandballoons.net/images/banner-thornandballoons.jpg" alt="thorn and balloons">
+                <div class="share-buttons">
+                    <button id="shareFacebook" class="fab fa-facebook"></button>
+                    <button id="shareTwitter" class="fab fa-twitter"></button>
+                    <button id="shareInstagram" class="fab fa-instagram"></button>
+                    <!--                <button onclick="hideIframe()">Close</button>-->
+                    <button onclick="reloadPage()"><i class="fas fa-refresh"></i></button>
+                    <button onclick="toggleFullScreen()"><i class="fas fa-expand"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="google-ads-container-01">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9259419232762821"
+                    crossorigin="anonymous"></script>
+            <!-- thorn-001 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:100%;height:150px;"
+                 data-ad-client="ca-pub-9259419232762821"
+                 data-ad-slot="7392276993"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+
+        <div id="pop">
+            <div class="sortTitle">
+                <img src="https://cdn.thornandballoons.net/images/icon-rating-games.png" height="50" alt="thorns and balloons rating games"/>
+            </div>
+            <div class="pop swiper-container-initialized swiper-container-horizontal swiper-container-free-mode swiper-container-android">
+                <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+                    <% ratingGames.forEach(game => { %>
+                        <div class="swiper-slide swiper-slide-active" style="margin-right: 15px;">
+                            <a href="/games/<%= game.urlTag %>">
+                                <div class="thum" style="height: 135px; width: 135px;">
+                                    <img class="lazyload" data-src="<%= game.imageUrl %>" alt="<%= game.name %>">
+                                </div>
+                                <h3><%= game.name %></h3>
+                                <div class="desc"><span><%= game.playCount %>K+ Play</span>&nbsp;</div>
+                            </a>
+                            <a class="play" href="/games/<%= game.urlTag %>">Play</a>
+                        </div>
+                    <% }) %>
+                </div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+        </div>
+    </div>
+    <div class="new-right">
+        <div class="new-header">
+            <img class="new-games-logo" src="https://cdn.thornandballoons.net/images/thorn-and-balloons-new-games-png2.png" alt="new games thorn and balloons png">
+            <div class="new-title">New Games</div>
+        </div>
+        <ul class="image-list game-list-container">
+            <% newGames.forEach(game => { %>
+                <li class="image-list-item box2">
+                    <a href="/games/<%= game.urlTag %>">
+                        <div>
+                            <img class="lazyload" data-src="<%= game.imageUrl %>" alt="<%= game.name %>">
+                        </div>
+
+                        <div class="item-title"><%= game.name %></div>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+
+<div style="margin-top: 10px;max-width:1200px;margin:0 auto;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9259419232762821"
+            crossorigin="anonymous"></script>
+    <!-- thorn-list-01 -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:100%;height:250px"
+         data-ad-client="ca-pub-9259419232762821"
+         data-ad-slot="1689358323"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+
+<div id="pop">
+    <div class="sortTitle">
+        <img src="https://cdn.thornandballoons.net/images/thorns-and-balloons-editors-choice.png" height="50"/>
+    </div>
+    <div class="pop swiper-container-initialized swiper-container-horizontal swiper-container-free-mode swiper-container-android">
+        <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+            <% editorChoiceGames.forEach(game => { %>
+                <div class="swiper-slide swiper-slide-active" style="margin-right: 15px;">
+                    <a href="/games/<%= game.urlTag %>">
+                        <div class="thum" style="height: 135px; width: 135px;">
+                            <img class="lazyload" data-src="<%= game.imageUrl %>" alt="<%= game.name %>">
+                        </div>
+                        <h3><%= game.name %></h3>
+                        <div class="desc"><span><%= game.playCount %>K+ Play</span>&nbsp;</div>
+                    </a>
+                    <a class="play" href="/games/<%= game.urlTag %>">Play</a>
+                </div>
+            <% }) %>
+        </div>
+        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+</div>
+
+<div class="new-container" style="margin-top: 20px;max-width: 90%">
+    <div class="new-right" style="width: 100%;">
+        <div class="new-header">
+            <img class="new-games-logo" src="https://cdn.thornandballoons.net/images/thorn-and-balloons-new-games-png2.png" alt="new games thorn and balloons png">
+            <div class="new-title">New Games</div>
+        </div>
+        <ul class="image-list game-list-container">
+            <% brainGames.forEach(game => { %>
+                <li class="image-list-item box3">
+                    <a href="/games/<%= game.urlTag %>">
+                        <div>
+                            <img class="lazyload" data-src="<%= game.imageUrl %>" alt="<%= game.name %>">
+                        </div>
+
+                        <div class="item-title"><%= game.name %></div>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+
+<div id="description-div" class="description-div">
+    <div style="padding: 15px;">
+        <h2>What is Thorn and Balloons</h2>
+        <p>"Thorn and Balloons" is an engaging casual game that involves bouncing a thorn ball. Players must skillfully control the strength and angle of the launch. When the thorn ball collides with a wall, it rebounds, and the objective is to break all the balloons through these ricochets in order to achieve victory.</p>
+        <h2 style="margin-top: 50px;">How to Play: Thorn and Balloons</h2>
+        <ul>
+            <li>Press and hold the screen, then swipe back to control the power of the launch.</li>
+            <li>Swipe diagonally to adjust the angle of the launch.</li>
+            <li>Release your finger, and the thorn ball will launch.</li>
+            <li>The thorn ball will fall under the influence of gravity.</li>
+            <li>It will bounce when it hits the wall.</li>
+            <li>Any balloon touched by the thorn ball will burst.</li>
+            <li>Destroy all balloons to win the game.</li>
+        </ul>
+
+        <h2 style="margin-top: 50px;">Thorn and Balloons Features</h2>
+        <ul>
+            <li>Levels with mind-bending challenges.</li>
+            <li>Relaxing and engaging gameplay.</li>
+            <li>Brainpower development through strategic thinking.</li>
+            <li>Abstract graphics experience for a unique visual journey.</li>
+            <li>Completely free physics-based game with no hidden costs.</li>
+        </ul>
+
+        <div style="margin-top: 30px;" class="feedback">
+            <p>We look forward to hearing your thoughts!</p>
+            <p>Please leave your comments so we can continue to improve Thorn and Balloons game.</p>
+        </div>
+    </div>
+</div>
+
+<button id="exitFullscreenButton">
+    <img src="https://cdn.thornandballoons.net/images/icon-back-200.png" style="margin-top: 5px;" width="35"/>
+</button>
+
+<!--<footer>
+    <a href="/about-us">About US</a>
+    <a href="/privacy-policy">Privacy Policy</a>
+    <a href="/change-log">Change Log</a>
+</footer>-->
+
+<!--<button class="exit-btn" onclick="toggleFullScreen()">退出全屏</button>-->
+<script>
+    const exitFullscreenButton = document.getElementById('exitFullscreenButton');
+    exitFullscreenButton.style.display = 'none';
+
+    const toolbarDiv = document.getElementById('toolbar-div');
+    // toolbarDiv.style.display = 'none';
+
+    // Share Buttons
+    /*const playGameButton = document.getElementById('playGameButton');
+    playGameButton.addEventListener('click', function() {
+        document.getElementById("gameFrame").style.display = '';
+        document.getElementById("toolbar-div").style.display = '';
+        document.getElementById("classic-game-detail").style.display = 'none';
+    });*/
+
+    const shareFacebook = document.getElementById('shareFacebook');
+    const shareTwitter = document.getElementById('shareTwitter');
+    const shareInstagram = document.getElementById('shareInstagram');
+
+    const shareURL = "https://thornandballoons.net/";
+    const shareText = "Thorn and Balloons is a fun casual game where you control a thorn ball's launch strength and angle. Bounce it off walls to burst all balloons and win!";
+
+    shareFacebook.addEventListener('click', function() {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareURL)}`, '_blank');
+    });
+
+    shareTwitter.addEventListener('click', function() {
+        window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareURL)}&text=${encodeURIComponent(shareText)}`, '_blank');
+    });
+
+    shareInstagram.addEventListener('click', function() {
+        window.open(`https://www.instagram.com/?url=${encodeURIComponent(shareURL)}`, '_blank');
+    });
+
+    // add 20250223
+    function toggleMenu() {
+        const menu = document.querySelector('.navbar .menu');
+        menu.classList.toggle('mobile-menu-active');
+    }
+
+    function showIframe() {
+        document.querySelector('.game-preload').style.display = 'none';
+        document.querySelector('.game-preload').style.height = '85vh';
+        document.querySelector('.iframe-container').style.height = '85vh';
+        document.getElementById('game-iframe').style.height = '70vh';
+        document.querySelector('.iframe-container').style.display = 'block';
+    }
+
+    function hideIframe() {
+        document.querySelector('.game-preload').style.display = 'flex';
+        document.querySelector('.game-preload').style.height = '65vh';
+        document.querySelector('.iframe-container').style.height = '65vh';
+        document.querySelector('.iframe-container').style.display = 'none';
+    }
+
+    function toggleFullScreen() {
+        // if (!document.fullscreenElement) {
+        requestFullScreen();
+        // document.getElementById("fullscreenFrame").style.display = '';
+        exitFullscreenButton.style.display = '';
+        // document.getElementById("fullscreenButton").style.top = '30px';
+
+        const iframe = document.getElementById('game-iframe');
+        // const navBar = document.getElementById("nav-bar");
+        iframe.classList.add('fullscreen');
+        // navBar.style.display = "none";
+    }
+
+    exitFullscreenButton.addEventListener('click', () => {
+        exitFullScreen();
+
+        const iframe = document.getElementById('game-iframe');
+        // const navBar = document.getElementById("nav-bar");
+
+        // 如果当前处于“全屏”状态，恢复默认大小
+        iframe.classList.remove('fullscreen');
+        // navBar.style.display = "";
+
+        exitFullscreenButton.style.display = 'none';
+        // button.textContent = 'Full Screen';
+    });
+
+    // 请求全屏
+    function requestFullScreen() {
+        const elem = document.documentElement;
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen().catch(err => {
+                console.error(`can not enter Full Screen: ${err.message}`);
+            });
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        }
+    }
+
+    // 退出全屏
+    function exitFullScreen() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen().catch(err => {
+                console.error(`can not Exit Full Screen: ${err.message}`);
+            });
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    }
+
+    /*function toggleFullScreen() {
+        const iframe = document.getElementById('game-iframe');
+        if (!document.fullscreenElement) {
+            // Enter fullscreen
+            iframe.requestFullscreen().catch(err => {
+                // Handle errors (e.g., user denied fullscreen request)
+                console.error(`Unable to enter fullscreen mode: ${err.message}`);
+            });
+            exitFullscreenButton.style.display = '';
+        } else {
+            // Exit fullscreen
+            document.exitFullscreen().catch(err => {
+                // Handle errors (e.g., user denied exit fullscreen request)
+                console.error(`Unable to exit fullscreen mode: ${err.message}`);
+            });
+            exitFullscreenButton.style.display = 'none';
+        }
+    }*/
+
+    function reloadPage() {
+        window.location.reload();
+    }
+
+    /*function toggleFullScreen() {
+        const iframe = document.getElementById('game-iframe');
+        const exitBtn = document.querySelector('.exit-btn');
+        const navBar = document.getElementById("nav-bar");
+
+        if (iframe.classList.contains('fullscreen')) {
+            // 如果当前处于“全屏”状态，恢复默认大小
+            iframe.classList.remove('fullscreen');
+            exitBtn.style.display = "none"; // 隐藏退出按钮
+            navBar.style.display = "";
+        } else {
+            // 如果当前不是“全屏”状态，切换到全屏大小
+            iframe.classList.add('fullscreen');
+            exitBtn.style.display = "block"; // 显示退出按钮
+            navBar.style.display = "none";
+        }
+    }*/
+
+    lazyload();
+    // $(".lazyload").lazyload();
+    // 左右滑动列表 开始
+    // new game 横向滑动开始
+    var totalWidth = document.getElementById("pop").offsetWidth;
+    var sideLength = Math.floor((totalWidth - 30) / 4);
+    var thumbPic = document.querySelectorAll(".thum");
+    for (i = 0; i < thumbPic.length; i++) {
+        thumbPic[i].style.width = thumbPic[i].style.height = sideLength + "px";
+    }
+    new Swiper('.pop', {
+        freeMode: true,
+        slidesPerView: 'auto',
+        spaceBetween: 15,
+        delay: 2500,
+        loopedSlides: 3
+    });
+    // new game 横向滑动结束
+</script>
+</body>
+</html>

@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= game.title %></title>
+    <meta name="description" content="<%= game.shortDesc %>" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" href="https://cdn.thornandballoons.net/game/icons/icon-256.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.thornandballoons.net/commons/lazyload.js"></script>
+
+    <!-- Google tag (gtag.js)
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V50BKGMG2Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-V50BKGMG2Y');
+    </script> -->
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            padding: 0;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #b0e57b;
+            max-width: 1200px;
+        }
+
+        #exitFullscreenButton {
+            font-size: 16px;
+            cursor: pointer;
+            position: fixed;
+            top:90px;
+            font-size: 16px;
+            background-color: #af09a1;
+            color: white;
+            border: none;
+            border-bottom-right-radius: 15px;
+            border-top-right-radius: 15px;
+            cursor: pointer;
+        }
+        #fullscreenFrame{
+            height: 100%;
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            background: #fff;
+            padding: 5px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .left-panel {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .right-panel {
+            flex: 1;
+            padding: 20px;
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            margin-left: 20px;
+        }
+
+        h1, h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 20px;
+        }
+
+        ul li {
+            background: #e0f7ff;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        /*p {*/
+        /*    margin: 0 0 20px;*/
+        /*}*/
+
+        .game-container {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            /*padding: 20px;*/
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: width 0.3s ease;
+            /*background-image: url('https://cdn.thornandballoons.net/images/banner-thornandballoons.jpg');*/
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .game-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .game-container h1, .game-container p, .game-container button {
+            position: relative;
+            z-index: 1;
+        }
+
+        .game-container h1 {
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+
+        .game-container p {
+            margin: 0 0 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .game-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .game-container button:hover {
+            background-color: #45a049;
+        }
+
+        .game-container a {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 180px;
+            margin: 0 auto;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .game-container a:hover {
+            background-color: #45a049;
+        }
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 98%;
+            margin-bottom: 20px;
+        }
+
+        .toolbar img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .toolbar h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .toolbar button {
+            padding: 8px 16px;
+            font-size: 14px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .toolbar button:hover {
+            background-color: #45a049;
+        }
+
+        .toolbar .share-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .toolbar .share-buttons button {
+            background-color: transparent;
+            color: #333;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .toolbar .share-buttons button:hover {
+            color: #4CAF50;
+        }
+
+
+        .header {
+            position: relative;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            background: linear-gradient(180deg, #1ab394, #7dff3e);
+            overflow: hidden;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #fff;
+            margin: 0;
+            position: relative;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            fill: none;
+            stroke: url(#rainbow-gradient);
+            stroke-width: 9;
+            stroke-dasharray: 190 300;
+            stroke-dashoffset: 0;
+            animation: wave 10s linear infinite;
+        }
+
+        @keyframes wave {
+            0% {
+                stroke-dashoffset: 0;
+            }
+            100% {
+                stroke-dashoffset: -490;
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            iframe, .toolbar {
+                width: 100%;
+            }
+
+            .game-frame{
+                height: 100%;
+            }
+
+            .toolbar {
+                align-items: center;
+            }
+
+            .toolbar img, .toolbar h3, .toolbar button {
+                margin-bottom: 10px;
+            }
+
+            .toolbar .share-buttons{
+                gap: 2px;
+            }
+
+            .game-container {
+                width: 100%;
+                padding: 0px;
+            }
+
+            .container{
+                padding: 0px;
+            }
+
+            .right-panel{
+                margin-left: 0px;
+            }
+            .left-panel {
+                margin-top: 20px;
+            }
+
+            .header {
+                padding: 30px 0;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .wave {
+                height: 100px;
+            }
+        }
+
+        .game-list-container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            padding: 20px;
+            gap: 1%;
+            box-sizing: border-box;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /*padding: 20px;*/
+            box-sizing: border-box;
+            margin-top: 5px;
+            width: 49%;
+        }
+
+        .box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .box h2 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .box p {
+            text-align: center;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .footer {
+            width: 100%;
+            text-align: left;
+            background-color: white;
+            margin-top: 20px;
+        }
+
+        .footer h1, h2 {
+            color: #666666;
+        }
+
+        @media (max-width: 768px) {
+            .box {
+                width: 32%;
+            }
+        }
+
+        /*    add 20250223 */
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #d518f6;
+            color: white;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a{
+            text-decoration: none;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar .logo h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .navbar .menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar .menu li {
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .navbar .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .navbar .menu .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #444;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .menu .submenu a {
+            display: block;
+            margin: 5px 0;
+        }
+
+        .navbar .menu li:hover .submenu {
+            display: block;
+        }
+
+        /* Mobile Menu */
+        .navbar .mobile-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        .navbar .mobile-menu i {
+            font-size: 24px;
+            color: white;
+        }
+
+        /* Media Query for Mobile Devices */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .navbar .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: #333;
+                padding: 10px;
+            }
+
+            .navbar .menu li {
+                margin: 10px 0;
+            }
+
+            .navbar .menu .submenu {
+                position: static;
+                background-color: #444;
+                margin-top: 10px;
+            }
+
+            .navbar .mobile-menu {
+                display: block;
+            }
+        }
+
+        /* Main Content */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            /*margin-top: 60px; !* Adjust for navbar height *!*/
+        }
+
+        .left-div {
+            background-color: #f0f0f0;
+            background-image: url(https://cdn.thornandballoons.net/images/ts-bg.svg);
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .iframe-container {
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: opacity 0.5s ease;
+        }
+
+        .iframe-container {
+            display: none;
+            position: relative;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: calc(80vh - 60px); /* Adjust for navbar height */
+            border: none;
+        }
+
+        .right-div {
+            background-color: #163a3b;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .game-main-image {
+            width: 40%;
+            height: auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border-radius: 8px;
+        }
+
+        .game-title {
+            text-align: center;
+            font-size: 14px;
+            margin: 20px 0;
+            color: rgba(102, 51, 153, 0.69);
+        }
+
+        .play-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .image-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .image-list-item {
+            display: flex;
+            /*margin-bottom: 20px;*/
+            cursor: pointer;
+        }
+
+        .image-list-item:hover{
+            /*border: 4px solid #2cffc3;*/
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-list-item img {
+            height: auto;
+            border-radius: 8px;
+            margin-right: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .image-list-item .item-title {
+            font-size: 16px;
+        }
+
+        .image-list-item a{
+            text-decoration: none;
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .game-main-image {
+                width: 80%;
+            }
+
+            .left-div , .iframe-container {
+                width: 100%;
+                height: 65vh;
+            }
+
+            .iframe-container{
+                padding: 0px;
+            }
+
+            .right-div {
+                width: 100%;
+            }
+        }
+
+        /* Media query for desktop devices */
+        @media (min-width: 769px) {
+            .left-div , .iframe-container {
+                width: 70%;
+                height: 80vh;
+            }
+
+            .right-div {
+                width: 28%;
+                margin-left: 10px;
+            }
+        }
+
+        #tesseract-splash-button {
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 5%;
+            margin: 0 auto;
+            outline: none;
+            flex-direction: row;
+            width: 13rem;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 86.154px;
+            background: #3b21cc !important;
+            color: #eee;
+            margin-bottom:30px;
+        }
+
+        #tesseract-splash-button>p {
+            margin-left: 1rem;
+        }
+
+        .exit-btn {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            display: none; /* 默认不显示 */
+            z-index: 1000;
+        }
+
+        iframe.fullscreen {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: none;
+        }
+
+        .also-like-container {
+            display: flex;
+            align-items: center; /* 垂直居中对齐 */
+            justify-content: flex-start; /* 水平起始对齐 */
+            gap: 16px; /* 图片和文字之间的间距 */
+            background-color: #2cffc3;
+            padding: 20px;
+            /*border-radius: 8px;*/
+            -webkit-border-top-left-radius: 8px;
+            -webkit-border-top-right-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .also-like-container img {
+            width: 50px; /* 图片宽度 */
+            height: auto; /* 保持图片比例 */
+            border-radius: 8px; /* 圆角效果 */
+        }
+        .also-like-container .text {
+            text-align: left; /* 文字靠左对齐 */
+            flex: 1; /* 占据剩余空间 */
+        }
+        .also-like-container .text h2 {
+            margin: 0 0 8px; /* 标题与段落的间距 */
+            color: white;
+        }
+        .also-like-container .text p {
+            margin: 0;
+        }
+
+        /*  nav start   */
+        .nav{
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo{
+            width: 150px;
+        }
+        @media (max-width: 768px) {
+            .logo {
+                width: 100px;
+            }
+        }
+
+        .top-header{
+            margin-bottom: 10px;
+        }
+
+        .top-games-logo{
+            width: 50px;
+            float: left;
+        }
+
+        .top-title{
+            line-height: 25px;
+            color: #009688;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .new-header{
+            margin-bottom: 10px;
+        }
+
+        .new-games-logo{
+            width: 50px;
+            float: left;
+        }
+
+        .new-title{
+            line-height: 50px;
+            color: #009688;
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+        /*  nav end  */
+
+    </style>
+
+</head>
+<body>
+<div class="nav">
+    <a href="https://thornandballoons.net/">
+        <img class="logo" src="https://cdn.thornandballoons.net/images/logo-thorn-and-balloons.png" alt="Logo thorn and balloons">
+    </a>
+</div>
+
+<div class="container">
+    <div class="left-div">
+        <img src="<%= game.imageUrl %>" alt="<%= game.name %>" class="game-main-image">
+        <h1 class="game-title"><%= game.name %></h1>
+        <a id="tesseract-splash-button" style="display: flex;cursor: pointer" onclick="showIframe()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" fill="none"><g clip-path="url(#clip0_3881_233)"><path d="M12.3067 0.692139C5.50672 0.692139 -0.000976562 6.19983 -0.000976562 12.9998C-0.000976562 19.7998 5.50672 25.3075 12.3067 25.3075C19.1067 25.3075 24.6144 19.7998 24.6144 12.9998C24.6144 6.19983 19.1067 0.692139 12.3067 0.692139ZM17.0267 15.6737L11.9036 18.6306C9.84518 19.8183 7.27287 18.3321 7.27287 15.9568V10.0429C7.27287 7.66752 9.84518 6.18137 11.9036 7.36906L17.0267 10.326C19.0852 11.5137 19.0852 14.486 17.0267 15.6737Z" fill="white"></path></g><defs><clipPath id="clip0_3881_233"><rect width="24.6154" height="24.6154" fill="white" transform="translate(0 0.692261)"></rect></clipPath></defs>
+            </svg>
+            <p>Play Now</p>
+        </a>
+
+
+
+        <!--  google ads start  -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9259419232762821"
+                crossorigin="anonymous"></script>
+        <!-- thorn-detail-01 -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:100%;height:150px;margin-top: 40px;"
+             data-ad-client="ca-pub-9259419232762821"
+             data-ad-slot="9664013271"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <!--  google ads end  -->
+    </div>
+    <div class="iframe-container">
+        <iframe id="game-iframe" src="<%= game.gameUrl %>" frameborder="0"></iframe>
+        <!--<div class="toolbar">
+            <button onclick="hideIframe()">Close</button>
+            <button onclick="toggleFullScreen()"><i class="fas fa-expand"></i></button>
+        </div>-->
+        <div id="toolbar-div" class="toolbar">
+            <img src="<%= game.imageUrl %>" alt="<%= game.name %>">
+            <div class="share-buttons">
+                <button id="shareFacebook" class="fab fa-facebook"></button>
+                <button id="shareTwitter" class="fab fa-twitter"></button>
+                <button id="shareInstagram" class="fab fa-instagram"></button>
+                <!--                <button onclick="hideIframe()">Close</button>-->
+                <button onclick="reloadPage()"><i class="fas fa-refresh"></i></button>
+                <button onclick="toggleFullScreen()"><i class="fas fa-expand"></i></button>
+            </div>
+        </div>
+
+        <!--  google ads start  -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9259419232762821"
+                crossorigin="anonymous"></script>
+        <!-- thorn-detail-01 -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:100%;height:150px;margin-top: 40px;"
+             data-ad-client="ca-pub-9259419232762821"
+             data-ad-slot="9664013271"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <!--  google ads end  -->
+    </div>
+    <div class="right-div">
+        <ul class="image-list game-list-container">
+            <% topGames.forEach(game => { %>
+                <li class="image-list-item box">
+                    <a href="/games/<%= game.urlTag %>">
+                        <div>
+                            <img class="lazyload" data-src="<%= game.imageUrl %>" alt="<%= game.name %>">
+                        </div>
+
+                        <div class="item-title"><%= game.name %></div>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+
+<div id="footer-div" class="footer">
+    <div style="padding: 15px;">
+        <%- game.description %>
+        <div style="margin-top: 30px;" class="feedback">
+            <p>We look forward to hearing your thoughts!</p>
+            <p>Please leave your comments so we can continue to improve <a href="https://thornandballoons.net/">Thorn and Balloons</a> game.</p>
+        </div>
+    </div>
+</div>
+
+<button id="exitFullscreenButton">
+    <img src="https://cdn.thornandballoons.net/images/icon-back-200.png" style="margin-top: 5px;" width="35"/>
+</button>
+
+<!--<button class="exit-btn" onclick="toggleFullScreen()">退出全屏</button>-->
+<script>
+    const exitFullscreenButton = document.getElementById('exitFullscreenButton');
+    exitFullscreenButton.style.display = 'none';
+
+    const toolbarDiv = document.getElementById('toolbar-div');
+    // toolbarDiv.style.display = 'none';
+
+    // Share Buttons
+    /*const playGameButton = document.getElementById('playGameButton');
+    playGameButton.addEventListener('click', function() {
+        document.getElementById("gameFrame").style.display = '';
+        document.getElementById("toolbar-div").style.display = '';
+        document.getElementById("classic-game-detail").style.display = 'none';
+    });*/
+
+    const shareFacebook = document.getElementById('shareFacebook');
+    const shareTwitter = document.getElementById('shareTwitter');
+    const shareInstagram = document.getElementById('shareInstagram');
+
+    const shareURL = "https://thornandballoons.net/";
+    const shareText = "<%= game.shortDesc %>";
+
+    shareFacebook.addEventListener('click', function() {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareURL)}`, '_blank');
+    });
+
+    shareTwitter.addEventListener('click', function() {
+        window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareURL)}&text=${encodeURIComponent(shareText)}`, '_blank');
+    });
+
+    shareInstagram.addEventListener('click', function() {
+        window.open(`https://www.instagram.com/?url=${encodeURIComponent(shareURL)}`, '_blank');
+    });
+
+    // add 20250223
+    function toggleMenu() {
+        const menu = document.querySelector('.navbar .menu');
+        menu.classList.toggle('mobile-menu-active');
+    }
+
+    function showIframe() {
+        document.querySelector('.left-div').style.display = 'none';
+        document.querySelector('.left-div').style.height = '85vh';
+        document.querySelector('.iframe-container').style.height = '85vh';
+        document.querySelector('.iframe-container').style.display = 'block';
+    }
+
+    function hideIframe() {
+        document.querySelector('.left-div').style.display = 'flex';
+        document.querySelector('.left-div').style.height = '65vh';
+        document.querySelector('.iframe-container').style.height = '65vh';
+        document.querySelector('.iframe-container').style.display = 'none';
+    }
+
+    function toggleFullScreen() {
+        // if (!document.fullscreenElement) {
+        requestFullScreen();
+        // document.getElementById("fullscreenFrame").style.display = '';
+        exitFullscreenButton.style.display = '';
+        // document.getElementById("fullscreenButton").style.top = '30px';
+
+        const iframe = document.getElementById('game-iframe');
+        // const navBar = document.getElementById("nav-bar");
+        iframe.classList.add('fullscreen');
+        // navBar.style.display = "none";
+    }
+
+    exitFullscreenButton.addEventListener('click', () => {
+        exitFullScreen();
+
+        const iframe = document.getElementById('game-iframe');
+        // const navBar = document.getElementById("nav-bar");
+
+        // 如果当前处于“全屏”状态，恢复默认大小
+        iframe.classList.remove('fullscreen');
+        // navBar.style.display = "";
+
+        exitFullscreenButton.style.display = 'none';
+        // button.textContent = 'Full Screen';
+    });
+
+    // 请求全屏
+    function requestFullScreen() {
+        const elem = document.documentElement;
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen().catch(err => {
+                console.error(`can not enter Full Screen: ${err.message}`);
+            });
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        }
+    }
+
+    // 退出全屏
+    function exitFullScreen() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen().catch(err => {
+                console.error(`can not Exit Full Screen: ${err.message}`);
+            });
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    }
+
+    /*function toggleFullScreen() {
+        const iframe = document.getElementById('game-iframe');
+        if (!document.fullscreenElement) {
+            // Enter fullscreen
+            iframe.requestFullscreen().catch(err => {
+                // Handle errors (e.g., user denied fullscreen request)
+                console.error(`Unable to enter fullscreen mode: ${err.message}`);
+            });
+            exitFullscreenButton.style.display = '';
+        } else {
+            // Exit fullscreen
+            document.exitFullscreen().catch(err => {
+                // Handle errors (e.g., user denied exit fullscreen request)
+                console.error(`Unable to exit fullscreen mode: ${err.message}`);
+            });
+            exitFullscreenButton.style.display = 'none';
+        }
+    }*/
+
+    function reloadPage() {
+        window.location.reload();
+    }
+
+    lazyload();
+
+    /*function toggleFullScreen() {
+        const iframe = document.getElementById('game-iframe');
+        const exitBtn = document.querySelector('.exit-btn');
+        const navBar = document.getElementById("nav-bar");
+
+        if (iframe.classList.contains('fullscreen')) {
+            // 如果当前处于“全屏”状态，恢复默认大小
+            iframe.classList.remove('fullscreen');
+            exitBtn.style.display = "none"; // 隐藏退出按钮
+            navBar.style.display = "";
+        } else {
+            // 如果当前不是“全屏”状态，切换到全屏大小
+            iframe.classList.add('fullscreen');
+            exitBtn.style.display = "block"; // 显示退出按钮
+            navBar.style.display = "none";
+        }
+    }*/
+</script>
+</body>
+</html>
